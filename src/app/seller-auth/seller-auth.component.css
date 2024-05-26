@@ -1,0 +1,18 @@
+.seller-head{
+    margin-top: 50px;
+    color: inherit;
+    margin-bottom: 31px;
+    text-align: center;
+}
+.signupform{
+    display: flex;
+    flex-direction: column;
+    width:300px;
+    margin: auto;
+}
+.form-control{
+    margin-bottom: 7px;
+}
+.form-button{
+    margin-top: 16px;
+}
