@@ -2,17 +2,17 @@
 <div class="seller-auth">
     <div class="sign-up">
         <h3 class="seller-head text-uppercase">Seller Sign Up</h3>
-        <form class="signupform">
+        <form class="signupform" [formGroup]="SignForm" (ngSubmit)="submit()">
             <label class="form-label"> User Name</label>
-            <input type="text" class="form-control" placeholder="User Name">
+            <input type="text" class="form-control" placeholder="User Name" formControlName="usernane">
 
             <label class="form-label"> Password</label>
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="text" class="form-control" placeholder="Password" formControlName="password">
 
             <label class="form-label"> Confirm Password</label>
-            <input type="text" class="form-control" placeholder="Confirm Password">
+            <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirm_password">
 
-            <button type="button" class="btn btn-info  form-control form-button">Sign Up</button>
+            <button type="submit" class="btn btn-info  form-control form-button">Sign Up</button>
         </form>
 
     </div>
