@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StyleSpotServiceService } from '../style-spot-service.service';
 
 @Component({
   selector: 'app-seller-auth',
@@ -9,13 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SellerAuthComponent implements OnInit{
   SignForm !: FormGroup
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private stylespotsevice :StyleSpotServiceService){
 
   }
 
   ngOnInit(): void {
     this.SignForm = this.fb.group({
-      usernane : [''],
+      username : [''],
       password : [''],
       confirm_password : ['']
 
@@ -24,6 +25,16 @@ export class SellerAuthComponent implements OnInit{
   }
   submit(){
     console.log('----------->>>signform',this.SignForm.value)
+    const data ={
+      signupdata :this.SignForm.value
+    }
+    this.stylespotsevice.sellerSignup(data).subscribe(res=>{
+
+    })
+    //.subscribe(res=>{
+      //console.log('---------->>>res', res)
+
+    //});
 
   }
 
