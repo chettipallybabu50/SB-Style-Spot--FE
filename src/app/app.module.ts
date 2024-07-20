@@ -12,6 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { SellerHomeComponent } from './seller-home/seller-home.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    SellerAuthComponent
+    SellerAuthComponent,
+    SellerHomeComponent
   ],
   imports: [
     BrowserModule,
