@@ -1,5 +1,5 @@
 
-<div class="seller-auth">
+<div *ngIf="!signup" class="seller-auth">
     <div class="sign-up">
         <h3 class="seller-head text-uppercase">Seller Sign Up</h3>
         <form class="signupform" [formGroup]="SignForm" (ngSubmit)="submit()">
@@ -13,8 +13,30 @@
             <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirm_password">
 
             <button type="submit" class="btn btn-info  form-control form-button">Sign Up</button>
+            <p class="mb-5 pb-lg-2" style="color: #393f81;">Have already an account ?  <a  (click)="olduser()" class="pointer" style="color: #393f81;"><u>Sign in
+                here</u></a></p>
         </form>
 
     </div>
 
+</div>
+
+<div *ngIf="signup" class="sellerlogin" [formGroup]="Signinform">
+    <h1 style="margin-top: 35px;">
+        Seller Login
+    </h1>
+    <div class="col-md-3">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" placeholder="User Name" formControlName="username">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Password</label>
+        <input type="text" class="form-control" placeholder="Password" formControlName="password">
+    </div>
+    <div class="col-md-3" style="margin-top: 23px;">
+        <button class="form-control" type="submit" (click)="signin()"
+            style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)">Signin</button>
+    </div>
+    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a (click)="newuser()" class="pointer" style="color: #393f81;"><u>Register
+            here</u></a></p>
 </div>

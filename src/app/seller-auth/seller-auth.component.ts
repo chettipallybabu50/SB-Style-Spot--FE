@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class SellerAuthComponent implements OnInit{
   SignForm !: FormGroup
+  public Signinform !: FormGroup
+  signup=false
 
   constructor(private fb:FormBuilder,private stylespotsevice :StyleSpotServiceService, private router:Router){
 
@@ -23,6 +25,10 @@ export class SellerAuthComponent implements OnInit{
       confirm_password : ['']
 
     })
+    this.Signinform =this.fb.group({
+      username : [''],
+      password : [''],
+    })
     
   }
   submit(){
@@ -31,6 +37,16 @@ export class SellerAuthComponent implements OnInit{
       signupdata :this.SignForm.value
     }
     this.stylespotsevice.sellerSignup(data)
+  }
+  signin(){
+
+    console.log('----------->>>signform',this.Signinform.value)
+  }
+  newuser(){
+    this.signup =false
+  }
+  olduser(){
+    this.signup=true
   }
 
 }
