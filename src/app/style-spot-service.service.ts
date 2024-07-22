@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpBackend, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/envronments/environment';
 import { BehaviorSubject } from 'rxjs';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class StyleSpotServiceService {
   isSellerlogedin = new BehaviorSubject<boolean>(false)
+  isInvalidlogin = new EventEmitter<boolean>(false)
 
   constructor(private http :HttpClient, private router:Router) { }
 
@@ -20,6 +21,7 @@ export class StyleSpotServiceService {
         // this.isSellerlogedin.next(true)
         localStorage.setItem('seller',JSON.stringify(res))
         // this.router.navigate(['seller-home'])
+        this.reloadSeller()
       }
      })
 
@@ -35,5 +37,32 @@ export class StyleSpotServiceService {
       this.router.navigate(['seller-home'])
 
     }
+    if(localStorage.getItem('sellerLogin')){
+      console.log('---->>login details getting')
+      this.isSellerlogedin.next(true)
+      this.router.navigate(['seller-home'])
+
+    }
+  }
+
+  sellerSigninaccount(data:any){
+    console.log('---->>>login user details',data)
+    this.http.post<any>(environment.apiEndpoint +'api/signinuser',data).subscribe(res=>{
+      console.log('---------->>>res',res)
+      if(res.status){
+        console.log('------->>>seller logged in successfully')
+        this.isInvalidlogin.emit(false)
+        localStorage.setItem('sellerLogin',JSON.stringify(res))
+        // this.isSellerlogedin.next(true)
+        // this.router.navigate(['seller-home'])
+        this.reloadSeller()
+      }
+      else{
+        console.log('invalid username or password')
+        this.isInvalidlogin.emit(true)
+      }
+
+    })
+
   }
 }

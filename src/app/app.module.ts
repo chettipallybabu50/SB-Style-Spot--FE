@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,7 +33,11 @@ import { SellerHomeComponent } from './seller-home/seller-home.component';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      positionClass:'toast-top-center'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
