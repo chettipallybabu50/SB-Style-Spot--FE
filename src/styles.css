@@ -18,3 +18,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* body {
     background-color:rgb(135, 206, 235) !important;
 } */
+.invalid-error{
+  color: red;
+}
+.is-invalid {
+  border: 1px solid red;
+}

@@ -4,13 +4,25 @@
         <h3 class="seller-head text-uppercase">Seller Sign Up</h3>
         <form class="signupform" [formGroup]="SignForm" (ngSubmit)="submit()">
             <label class="form-label"> User Name</label>
-            <input type="text" class="form-control" placeholder="User Name" formControlName="username">
+            <input type="text" class="form-control" placeholder="User Name" formControlName="username"
+            [ngClass]="{ 'is-invalid': signUp_submitted && SignForm.get('username')?.hasError('required') }">
+            <span class="invalid-error" *ngIf="signUp_submitted && SignForm.get('username')?.hasError('required')">
+                Please enter username
+            </span>
 
             <label class="form-label"> Password</label>
-            <input type="text" class="form-control" placeholder="Password" formControlName="password">
+            <input type="text" class="form-control" placeholder="Password" formControlName="password"
+            [ngClass]="{ 'is-invalid': signUp_submitted && SignForm.get('password')?.hasError('required') }">
+            <span class="invalid-error" *ngIf="signUp_submitted && SignForm.get('password')?.hasError('required')">
+                Please enter password
+            </span>
 
             <label class="form-label"> Confirm Password</label>
-            <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirm_password">
+            <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirm_password"
+            [ngClass]="{ 'is-invalid': signUp_submitted && SignForm.get('confirm_password')?.hasError('required') }">
+            <span class="invalid-error" *ngIf="signUp_submitted && SignForm.get('confirm_password')?.hasError('required')">
+                Please Confirm password
+            </span>
 
             <button type="submit" class="btn btn-info  form-control form-button">Sign Up</button>
             <p class="mb-5 pb-lg-2" style="color: #393f81;">Have already an account ?  <a  (click)="olduser()" class="pointer" style="color: #393f81;"><u>Sign in
@@ -21,6 +33,9 @@
 
 </div>
 
+
+<!-- the below code is for sign in form -->
+
 <div *ngIf="signup" class="sellerlogin" [formGroup]="Signinform">
     <h1 style="margin-top: 35px;">
         Seller Login
@@ -28,11 +43,18 @@
     <!-- <p class="error">{{authError}}</p> -->
     <div class="col-md-3">
         <label class="form-label">User Name</label>
-        <input type="text" class="form-control" placeholder="User Name" formControlName="username">
+        <input type="text" class="form-control" placeholder="User Name" formControlName="username"
+        [ngClass]="{ 'is-invalid': signin_submitted && Signinform.get('username')?.hasError('required') }">
+        <span class="invalid-error" *ngIf="signin_submitted && Signinform.get('username')?.hasError('required')">
+            Please enter user name
+        </span>
     </div>
     <div class="col-md-3">
         <label class="form-label">Password</label>
-        <input type="text" class="form-control" placeholder="Password" formControlName="password">
+        <input type="text" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': signin_submitted && Signinform.get('password')?.hasError('required') }">
+        <span class="invalid-error" *ngIf="signin_submitted && Signinform.get('password')?.hasError('required')">
+            Please enter the password
+        </span>
     </div>
     <div class="col-md-3" style="margin-top: 23px;">
         <button class="form-control" type="submit" (click)="signin()"
