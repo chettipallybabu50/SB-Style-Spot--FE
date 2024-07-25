@@ -9,8 +9,8 @@
     <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav  pe-5">
+    <div [ngSwitch]="userType" class="collapse navbar-collapse" id="navbarNav">
+      <ul *ngSwitchCase="'default'" class="navbar-nav  pe-5">
         <li class="nav-item ms-3">
             <a class="nav-link" routerLink = "/seller-auth">Seller</a>
           </li>
@@ -22,6 +22,21 @@
         </li>
         <li class="nav-item ms-3">
           <a class="nav-link disabled" href="#">Cart</a>
+        </li>
+      </ul>
+      <!-- Seller Navbar -->
+      <ul *ngSwitchCase="'seller'" class="navbar-nav  pe-5">
+        <li class="nav-item ms-3">
+            <a class="nav-link" routerLink = "/seller-auth">Add Product</a>
+          </li>
+        <li class="nav-item active ms-3">
+          <a class="nav-link" href="#">List </a>
+        </li>
+        <li class="nav-item ms-3">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        <li class="nav-item ms-3">
+          <a class="nav-link " href="#">Sellername</a>
         </li>
       </ul>
     </div>
