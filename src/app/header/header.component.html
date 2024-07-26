@@ -27,16 +27,32 @@
       <!-- Seller Navbar -->
       <ul *ngSwitchCase="'seller'" class="navbar-nav  pe-5">
         <li class="nav-item ms-3">
-            <a class="nav-link" routerLink = "/seller-auth">Add Product</a>
-          </li>
+          <a class="nav-link" routerLink="/seller-add-product">Add Product</a>
+        </li>
         <li class="nav-item active ms-3">
           <a class="nav-link" href="#">List </a>
         </li>
+        <!-- <li class="nav-item ms-3">
+                <a class="nav-link" href="#">Logout</a>
+              </li> -->
         <li class="nav-item ms-3">
-          <a class="nav-link" href="#">Logout</a>
-        </li>
-        <li class="nav-item ms-3">
-          <a class="nav-link " href="#">Sellername</a>
+          <!-- <a class="nav-link " href="#"><mat-icon>
+                 
+                    account_circle 
+                  </mat-icon></a> -->
+      
+          <mat-icon class="maticon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+      
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item disabled>
+              <mat-icon>person</mat-icon>
+              <span>{{user_name | titlecase}}</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>logout</mat-icon>
+              <span (click)="logout()">Logout</span>
+            </button>
+          </mat-menu>
         </li>
       </ul>
     </div>

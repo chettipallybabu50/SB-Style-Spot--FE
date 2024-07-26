@@ -14,6 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { ToastrModule } from 'ngx-toastr';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     HomeComponent,
     SellerAuthComponent,
-    SellerHomeComponent
+    SellerHomeComponent,
+    SellerAddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatIconModule,
+    MatMenuModule,
     ToastrModule.forRoot({
       preventDuplicates: true,
       positionClass:'toast-top-center'
