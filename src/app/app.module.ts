@@ -17,7 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
     HttpClientModule,
     MatIconModule,
     MatMenuModule,
+    MatCardModule,
+    MatChipsModule,
     ToastrModule.forRoot({
       preventDuplicates: true,
       positionClass:'toast-top-center'
