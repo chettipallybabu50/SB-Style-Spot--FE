@@ -17,8 +17,10 @@ export class StyleSpotServiceService {
     console.log('---->>>hellow seller',data)
      this.http.post<any>(environment.apiEndpoint +'api/signupuser',data).subscribe(res=>{
       console.log('----->>>sign up res',res)
+      console.log('----->>>sign up res',res.data.user_id)
       if(res.status){
         // this.isSellerlogedin.next(true)
+        localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('seller',JSON.stringify(res))
         // this.router.navigate(['seller-home'])
         this.reloadSeller()
@@ -49,9 +51,11 @@ export class StyleSpotServiceService {
     console.log('---->>>login user details',data)
     this.http.post<any>(environment.apiEndpoint +'api/signinuser',data).subscribe(res=>{
       console.log('---------->>>res',res)
+      console.log('---------->>>res user_id' ,res.data.user_id)
       if(res.status){
         console.log('------->>>seller logged in successfully')
         this.isInvalidlogin.emit(false)
+        localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('sellerLogin',JSON.stringify(res))
         // this.isSellerlogedin.next(true)
         // this.router.navigate(['seller-home'])
