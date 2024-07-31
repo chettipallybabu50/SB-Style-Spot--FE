@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-seller-add-product',
@@ -8,18 +9,30 @@ import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 })
 export class SellerAddProductComponent {
   Addproductform !:FormGroup
+  user_id!: string | null;
+  product_file: File | null = null;
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private productservice:ProductService){
 
   }
   ngOnInit(){
+    console.log('----userid',this.user_id)
+    this.user_id = localStorage.getItem('user_id')
     this.Addproductform = this.fb.group({
       product_name:[''],
       product_price :[''],
       product_category:[''],
       product_color:[''],
       product_description:[''],
+      product_file_path:['']
     })
+  }
+
+  Onfilechange(event: any){
+    console.log('---->>>file',event.target.files)
+    console.log('---->>>file name ',event.target.files[0].name)
+    this.product_file = event.target.files[0]
+
   }
 
   submit(){
@@ -31,10 +44,18 @@ export class SellerAddProductComponent {
     formData.append('product_category', this.Addproductform.value.product_category);
     formData.append('product_color', this.Addproductform.value.product_color);
     formData.append('product_description', this.Addproductform.value.product_description);
+    formData.append('user_id', this.user_id as string);
+    if(this.product_file){
+      formData.append('product_file_path', this.product_file);
+    }
     console.log('--------->>>formData',formData)
     formData.forEach((value, key) => {
       console.log(key + ': ' + value);
     });
+
+    this.productservice.addingProduct(formData).subscribe(res =>{
+      console.log('---->>add product res',res)
+    })
   }
 
 }
