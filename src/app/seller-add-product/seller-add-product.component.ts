@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { ProductService } from '../services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller-add-product',
@@ -12,7 +13,7 @@ export class SellerAddProductComponent {
   user_id!: string | null;
   product_file: File | null = null;
 
-  constructor(private fb:FormBuilder,private productservice:ProductService){
+  constructor(private fb:FormBuilder,private productservice:ProductService, private  toaster:ToastrService){
 
   }
   ngOnInit(){
@@ -25,6 +26,9 @@ export class SellerAddProductComponent {
       product_color:[''],
       product_description:[''],
       product_file_path:['']
+    })
+    this.productservice.getAllproduct().subscribe(res=>{
+      console.log('=------>>all products',res)
     })
   }
 
@@ -55,6 +59,11 @@ export class SellerAddProductComponent {
 
     this.productservice.addingProduct(formData).subscribe(res =>{
       console.log('---->>add product res',res)
+      if(res){
+        console.log('---->>> get all products working')
+        this.toaster.success('Product added successfully')
+
+      }
     })
   }
 

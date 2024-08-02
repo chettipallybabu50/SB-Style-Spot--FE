@@ -12,4 +12,9 @@ export class ProductService {
   addingProduct(data:object){
     return this.http.post<any>(environment.apiEndpoint +'api/add-product',data)
   }
+  
+  getAllproduct(){
+    console.log('---->>>coming to getprouct')
+    return this.http.get<any>(environment.apiEndpoint +'api/getAllproducts')
+  }
 }
