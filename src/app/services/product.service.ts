@@ -17,4 +17,13 @@ export class ProductService {
     console.log('---->>>coming to getprouct')
     return this.http.get<any>(environment.apiEndpoint +'api/getAllproducts')
   }
+
+  deleteProduct(data: any){
+    console.log('---->>> servece delete', data.product_id)
+    const params = new HttpParams()
+    .set('product_id', data.product_id)
+    .set('user_id', data.user_id);
+    return this.http.delete<any>(environment.apiEndpoint +'api/delete-product',{params})
+
+  }
 }
