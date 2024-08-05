@@ -19,6 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatMenuModule,
     MatCardModule,
     MatChipsModule,
+    MatTableModule,
     ToastrModule.forRoot({
       preventDuplicates: true,
       positionClass:'toast-top-center'

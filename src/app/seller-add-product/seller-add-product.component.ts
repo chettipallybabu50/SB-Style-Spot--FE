@@ -27,9 +27,9 @@ export class SellerAddProductComponent {
       product_description:[''],
       product_file_path:['']
     })
-    this.productservice.getAllproduct().subscribe(res=>{
-      console.log('=------>>all products',res)
-    })
+    // this.productservice.getAllproduct().subscribe(res=>{
+    //   console.log('=------>>all products',res)
+    // })
   }
 
   Onfilechange(event: any){
