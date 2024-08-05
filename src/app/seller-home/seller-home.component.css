@@ -7,3 +7,6 @@
     background-color: #f2f2f2;
     font-weight: bold;
   }
+  .deleteicon{
+    cursor: pointer;
+  }
