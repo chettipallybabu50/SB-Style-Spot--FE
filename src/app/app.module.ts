@@ -20,6 +20,7 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTableModule} from '@angular/material/table';
+import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatTableModule} from '@angular/material/table';
     HomeComponent,
     SellerAuthComponent,
     SellerHomeComponent,
-    SellerAddProductComponent
+    SellerAddProductComponent,
+    SellerUpdateProductComponent
   ],
   imports: [
     BrowserModule,
