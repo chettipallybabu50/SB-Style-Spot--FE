@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { environment } from 'src/envronments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-home',
@@ -14,7 +15,7 @@ export class SellerHomeComponent {
   displayedColumns: string[] = ['position','product_name','product_file_path', 'product_price', 'product_category','product_color', 'product_description','action'];
   dataSource = new MatTableDataSource<any>([])
 
-  constructor(private ProductService : ProductService, private toaster: ToastrService){}
+  constructor(private ProductService : ProductService, private toaster: ToastrService, private router:Router){}
 
   ngOnInit(){
     this.ProductService.getAllproduct().subscribe(res=>{
@@ -53,6 +54,11 @@ export class SellerHomeComponent {
       //   this.toaster.error(res.message)
       // }
     })
+  }
+
+  updateprodctt(element: any){
+    console.log('-------->>>update product data',element)
+    this.router.navigate(['seller-update-product',element.product_id])
   }
 
 }

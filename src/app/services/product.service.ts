@@ -26,4 +26,13 @@ export class ProductService {
     return this.http.delete<any>(environment.apiEndpoint +'api/delete-product',{params})
 
   }
+  getproductbyId(data:any){
+    console.log('---->>> servece update', data.product_id)
+    const params = new HttpParams()
+    .set('product_id', data.product_id)
+    .set('user_id', data.user_id);
+    console.log('---->>>params', params)
+    return this.http.get<any>(environment.apiEndpoint +'api/get-product-By-id',{params})
+
+  }
 }

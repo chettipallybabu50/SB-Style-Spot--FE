@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    padding-top: 5px;
+    height: 100vh;
+    /* height: calc(100vh - 106px); */
+    display: grid;
+    place-items: center;
+    margin: 0;
+  }
+  
+  .add-product {
+    max-width: 615px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 12px;
+  }
+  
+  .form-control {
+    width: 100%;
+    /* padding: 10px;
+    margin: 10px 0; */
+  }
+  
