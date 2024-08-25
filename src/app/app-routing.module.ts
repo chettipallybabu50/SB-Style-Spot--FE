@@ -9,10 +9,14 @@ import { SellerUpdateProductComponent } from './seller-update-product/seller-upd
 
 const routes: Routes = [
   {
-    component : HomeComponent,
-    path : ''
-
-},
+    path: '',
+    redirectTo: 'home',  
+    pathMatch: 'full'
+  },
+  {
+    component: HomeComponent,
+    path: 'home'
+  },
 {
   component :SellerAuthComponent,
   path : 'seller-auth'
