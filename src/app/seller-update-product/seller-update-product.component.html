@@ -1,6 +1,6 @@
 <div class="add-product">
     <h3 style="text-align: center;">Update Product</h3>
-    <form [formGroup]="Updateproductform" (ngSubmit)="submit()">
+    <form [formGroup]="Updateproductform" (ngSubmit)="submit()"  style="overflow-y: auto;height: 70vh;">
       <div class="mb-2">
         <label class="form-label">Product Name</label>
         <input type="text" class="form-control" placeholder="Enter Product Name" formControlName="product_name">
@@ -23,12 +23,14 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Product Description"
         formControlName="product_description"></textarea>
       </div>
-      <div class="mt-2">
+      <div class="mt-2 mb-2">
        
-        <input type="file" class="form-control" (change)="Onfilechange($event)">
+        <input type="file"  (change)="Onfilechange($event)"  style="display: none">
+        <span class="product_image_upload form-control">Upload Product Image (.jpg/.jpeg/.png) File should be less
+          than 2mb</span>
       </div>
-      <div class="mt-4">
-          <button type="submit" class="form-control btn btn-primary">Update Product</button>
+      <div >
+          <button type="submit" class="form-control btn btn-primary" style="margin-top: 8px;">Update Product</button>
       </div>
     </form>
   </div>

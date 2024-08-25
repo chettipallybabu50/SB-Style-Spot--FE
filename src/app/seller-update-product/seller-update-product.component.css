@@ -5,7 +5,8 @@
     /* height: calc(100vh - 106px); */
     display: grid;
     place-items: center;
-    margin: 0;
+    /* margin: 0; */
+    margin-top: -35px;
   }
   
   .add-product {
@@ -24,4 +25,15 @@
     /* padding: 10px;
     margin: 10px 0; */
   }
+  .product_image_upload{
+    text-align: center;
+    padding:26px;
+    border: 2px dashed #03A9F4;
+    float: left;
+    position: sticky;
+    /* width: 300px; */
+    height: 77px;
+    font-size: 17px;
+    color: green;
+}
   
