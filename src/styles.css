@@ -13,7 +13,8 @@
     -o-transform: translateX(-50%);
   }
 
-html, body { height: 100%; }
+html, body { height: 100%;
+  overflow-y: hidden; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* body {
     background-color:rgb(135, 206, 235) !important;
