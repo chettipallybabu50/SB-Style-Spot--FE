@@ -29,11 +29,21 @@
     text-align: center;
     padding:26px;
     border: 2px dashed #03A9F4;
-    float: left;
-    position: sticky;
-    /* width: 300px; */
+    /* float: left;
+    position: sticky; */
     height: 77px;
     font-size: 17px;
     color: green;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    justify-content: center;
+  
+}
+.cancel-button{
+  margin-left: 10px;
+}
+.view-button{
+  margin-left: 5px;
 }
   

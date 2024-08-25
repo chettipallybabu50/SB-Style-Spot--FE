@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { ProductService } from '../services/product.service';
+import { environment } from 'src/envronments/environment';
 
 @Component({
   selector: 'app-seller-update-product',
@@ -13,6 +14,9 @@ export class SellerUpdateProductComponent {
   Updateproductform !:FormGroup
   product_file: File | null = null;
   user_id!: string | null;
+  Products_data = [];
+  product_path : string | undefined
+  product_path_url = "";
 
   constructor(private activroute: ActivatedRoute, private fb:FormBuilder, private productservice:ProductService){}
 
@@ -51,6 +55,9 @@ export class SellerUpdateProductComponent {
      this.productservice.getproductbyId(data).subscribe(res=>{
       console.log('---->>>get pro by id result', res)
       if(res.status){
+        this.Products_data = res
+        console.log('----------->>>this.Products_data', this.Products_data)
+        this.product_path =  res.data.product_file_path
         this.Updateproductform.patchValue({
           product_name :res.data.product_name,
           product_price : res.data.product_price,
@@ -59,6 +66,10 @@ export class SellerUpdateProductComponent {
           product_description: res.data.product_category,
           product_file_path:res.data.product_file_path
         })
+        if(this.product_path){
+          this.product_path_url = environment.apiEndpoint +res.data.product_file_path;
+
+        }
 
       }
      })

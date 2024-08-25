@@ -26,12 +26,43 @@
       <div class="mt-2 mb-2">
        
         <input type="file"  (change)="Onfilechange($event)"  style="display: none">
-        <span class="product_image_upload form-control">Upload Product Image (.jpg/.jpeg/.png) File should be less
+        <span *ngIf="!product_path" class="product_image_upload form-control">Upload Product Image (.jpg/.jpeg/.png) File should be less
           than 2mb</span>
+          <span *ngIf="product_path" class="product_image_upload form-control">{{product_path}}
+            <mat-icon class="cancel-button">cancel</mat-icon>
+            <mat-icon data-bs-toggle="modal" class="view-button"
+            data-bs-target="#Productfile_open" >visibility</mat-icon>
+          </span> 
       </div>
       <div >
           <button type="submit" class="form-control btn btn-primary" style="margin-top: 8px;">Update Product</button>
       </div>
     </form>
+  </div>
+
+
+
+
+  <!-- to view the product   -->
+
+
+       
+
+  <div class="modal fade" id="Productfile_open" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none;">
+          <h4 class="modal-title fs-5" id="exampleModalLabel" style="margin: 0 auto; text-align: center">{{product_path}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img
+            src="{{ product_path_url }}"
+            id="productUpload_file"
+            style="width: 100%; height: 264px"
+          /> 
+        </div>
+      </div>
+    </div>
   </div>
   
