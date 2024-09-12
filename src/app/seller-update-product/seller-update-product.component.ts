@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { ProductService } from '../services/product.service';
 import { environment } from 'src/envronments/environment';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-seller-update-product',
@@ -18,7 +20,7 @@ export class SellerUpdateProductComponent {
   product_path : string | undefined
   product_path_url = "";
 
-  constructor(private activroute: ActivatedRoute, private fb:FormBuilder, private productservice:ProductService){}
+  constructor(private activroute: ActivatedRoute, private fb:FormBuilder, private productservice:ProductService,private toaster:ToastrService){}
 
   ngOnInit(){
     this.user_id = localStorage.getItem('user_id')
@@ -43,7 +45,17 @@ export class SellerUpdateProductComponent {
   Onfilechange(event: any){
     console.log('---->>>file',event.target.files)
     console.log('---->>>file name ',event.target.files[0].name)
+    let [file] = event.target.files;
+    console.log('-------->>>file', file)
+    this.product_path = event.target.files[0].name
     this.product_file = event.target.files[0]
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = ()=>{
+      this.product_path_url = reader.result as string;
+      console.log('---------->>product_path_url', this.product_path_url)
+
+    }
   }
 
   getproductByid(){
@@ -75,7 +87,43 @@ export class SellerUpdateProductComponent {
      })
   }
 
+  clearimage(){
+    console.log('clear the product')
+    this.product_path =''
+    this.product_path_url = ''
+  }
+  
+
+  aadharCardTrigger() {
+    let element = document.getElementById('aadhar_upload_file') as HTMLInputElement;
+    element.click();
+  }
+
   submit(){
+    console.log('------->>Updateproductform', this.Updateproductform.value)
+    const formData = new FormData();
+    formData.append('product_name', this.Updateproductform.value.product_name);
+    formData.append('product_price', this.Updateproductform.value.product_price);
+    formData.append('product_category', this.Updateproductform.value.product_category);
+    formData.append('product_color', this.Updateproductform.value.product_color);
+    formData.append('product_description', this.Updateproductform.value.product_description);
+    formData.append('user_id', this.user_id as string);
+    formData.append('product_id', this.productId as string)
+    if(this.product_file){
+      formData.append('product_file_path', this.product_file);
+    }
+    console.log('---->>>update product_file',this.product_file)
+    // the below line is to check data in the formData
+    formData.forEach((value, key) => {
+      console.log(key + ': ' + value);
+    });
+    this.productservice.updateProduct(formData).subscribe(res =>{
+      console.log('---->>>update product result', res)
+      if(res.status){
+        this.toaster.success('Product Details updated successfully')
+
+      }
+    })
 
   }
 

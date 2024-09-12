@@ -24,16 +24,21 @@
         formControlName="product_description"></textarea>
       </div>
       <div class="mt-2 mb-2">
-       
-        <input type="file"  (change)="Onfilechange($event)"  style="display: none">
-        <span *ngIf="!product_path" class="product_image_upload form-control">Upload Product Image (.jpg/.jpeg/.png) File should be less
-          than 2mb</span>
+      
+        <input type="file" (change)="Onfilechange($event)" style="display: none" id="aadhar_upload_file">
+        <div id="file" class="aadhar_uploader" (click)="aadharCardTrigger()">
+          <span *ngIf="!product_path" class="product_image_upload form-control">Upload Product Image (.jpg/.jpeg/.png) File
+            should be less
+            than 2mb</span>
           <span *ngIf="product_path" class="product_image_upload form-control">{{product_path}}
-            <mat-icon class="cancel-button">cancel</mat-icon>
-            <mat-icon data-bs-toggle="modal" class="view-button"
-            data-bs-target="#Productfile_open" >visibility</mat-icon>
-          </span> 
+          </span>
+        </div>
+        <div *ngIf="product_path" class="view-cancel">
+          <mat-icon class="cancel-button" (click)="clearimage()">cancel</mat-icon>
+          <mat-icon data-bs-toggle="modal" class="view-button" data-bs-target="#Productfile_open">visibility</mat-icon>
+        </div>
       </div>
+     
       <div >
           <button type="submit" class="form-control btn btn-primary" style="margin-top: 8px;">Update Product</button>
       </div>
