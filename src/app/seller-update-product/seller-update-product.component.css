@@ -42,8 +42,17 @@
 }
 .cancel-button{
   margin-left: 10px;
+  cursor: pointer;
+  color: green;
 }
 .view-button{
   margin-left: 5px;
+  cursor: pointer;
+  color: green;
+}
+.view-cancel {
+  float: right;
+  margin-top: -49px;
+  margin-right: 12px;
 }
   

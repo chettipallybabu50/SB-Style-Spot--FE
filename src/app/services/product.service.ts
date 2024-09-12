@@ -12,6 +12,9 @@ export class ProductService {
   addingProduct(data:object){
     return this.http.post<any>(environment.apiEndpoint +'api/add-product',data)
   }
+  updateProduct(data:object){
+    return this.http.patch<any>(environment.apiEndpoint +'api/Update-Product',data)
+  }
   
   getAllproduct(){
     console.log('---->>>coming to getprouct')
