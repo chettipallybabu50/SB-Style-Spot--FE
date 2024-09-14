@@ -8,14 +8,14 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',  
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'home',  
+  //   pathMatch: 'full'
+  // },
   {
     component: HomeComponent,
-    path: 'home'
+    path: ''
   },
 {
   component :SellerAuthComponent,
