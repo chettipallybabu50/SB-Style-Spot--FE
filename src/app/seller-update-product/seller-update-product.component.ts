@@ -74,8 +74,8 @@ export class SellerUpdateProductComponent {
           product_name :res.data.product_name,
           product_price : res.data.product_price,
           product_category : res.data.product_category,
-          product_color : res.data.product_category,
-          product_description: res.data.product_category,
+          product_color : res.data.product_color,
+          product_description: res.data.product_description,
           product_file_path:res.data.product_file_path
         })
         if(this.product_path){

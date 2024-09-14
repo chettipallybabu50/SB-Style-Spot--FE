@@ -50,8 +50,7 @@ export class StyleSpotServiceService {
   sellerSigninaccount(data:any){
     console.log('---->>>login user details',data)
     this.http.post<any>(environment.apiEndpoint +'api/signinuser',data).subscribe(res=>{
-      console.log('---------->>>res',res)
-      console.log('---------->>>res user_id' ,res.data.user_id)
+      console.log('---------->>>sigin in 50 res',res)
       if(res.status){
         console.log('------->>>seller logged in successfully')
         this.isInvalidlogin.emit(false)
