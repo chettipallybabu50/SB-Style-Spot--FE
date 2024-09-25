@@ -2,7 +2,15 @@
 <nav class="navbar navbar-expand-md navbar-light  mt-1 ms-1 me-1" style="background-color: rgb(135, 206, 235);">
     <a class="navbar-brand ms-3" href="#">StyleSpot</a>
     <form class="d-flex w-50 ms-2">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" 
+        [formControl]="myControl"  [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option style="font-size: 14px;"
+            *ngFor="let item of filteredOptions | async"
+            [value]="item.product_name" >
+            {{ item.product_name }} 
+          </mat-option>
+        </mat-autocomplete>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
       

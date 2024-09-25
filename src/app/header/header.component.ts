@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +12,24 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   userType :string ='default'
   user_name :string =''
+  productsList: any[] = [];
+  myControl = new FormControl('');
+  filteredOptions: Observable<any> | undefined;
 
-  constructor(private router:Router){}
+  constructor(private router:Router ,private productservice: ProductService){}
 
   ngOnInit(){
+    this.productservice.getAllproduct().subscribe(res=>{
+      console.log('----->>search product', res)
+      if(res.status){
+        this.productsList = res.data
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value || '')),
+        );
+
+      }
+    })
     // if(localStorage.getItem('sellerLogin')){
     //   let sellerstorage = localStorage.getItem('sellerLogin')
     //   let sellerdata = sellerstorage &&JSON.parse(sellerstorage)
@@ -49,6 +66,13 @@ export class HeaderComponent {
     localStorage.removeItem('seller')
     localStorage.removeItem('sellerLogin')
     this.router.navigate(['/'])
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.productsList.filter(option => option.product_name.toLowerCase().includes(filterValue) || 
+    option.product_category.toLowerCase().includes(filterValue) );
   }
 
 }
