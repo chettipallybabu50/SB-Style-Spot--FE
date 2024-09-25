@@ -20,7 +20,10 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTableModule} from '@angular/material/table';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {AsyncPipe} from '@angular/common';
 import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { SellerUpdateProductComponent } from './seller-update-product/seller-upd
     SellerAuthComponent,
     SellerHomeComponent,
     SellerAddProductComponent,
-    SellerUpdateProductComponent
+    SellerUpdateProductComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { SellerUpdateProductComponent } from './seller-update-product/seller-upd
     MatCardModule,
     MatChipsModule,
     MatTableModule,
+    MatAutocompleteModule,
+    AsyncPipe,
     ToastrModule.forRoot({
       preventDuplicates: true,
       positionClass:'toast-top-center'
