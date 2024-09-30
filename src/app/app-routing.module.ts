@@ -39,7 +39,7 @@ const routes: Routes = [
 },
 {
   component :SearchComponent,
-  path:'search-product'
+  path:'search-product/:query'
 }
 ];
 
