@@ -75,4 +75,13 @@ export class HeaderComponent {
     option.product_category.toLowerCase().includes(filterValue) );
   }
 
+  submitsearch(val:string){
+    console.log('---->>>search value',val)
+    if(val){
+      this.router.navigate([`search-product/${val}`])
+    }
+    
+
+  }
+
 }

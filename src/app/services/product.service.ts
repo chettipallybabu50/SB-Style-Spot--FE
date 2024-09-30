@@ -38,4 +38,10 @@ export class ProductService {
     return this.http.get<any>(environment.apiEndpoint +'api/get-product-By-id',{params})
 
   }
+
+  serachproduct(searchQuery:any){
+    const params = new HttpParams()
+    .set('query',searchQuery)
+    return this.http.get<any>(environment.apiEndpoint +'api/search-product',{params})
+  }
 }

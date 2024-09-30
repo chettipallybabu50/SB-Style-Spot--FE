@@ -1,1 +1,19 @@
-<p>search works!</p>
+<div class="row search-item" *ngFor = "let item of searchedproducts">
+    <div class="col-sm-3">
+        <img [src]="item.product_file_path" alt="">
+
+    </div>
+    <div class="col-sm-8 details">
+        <h6>{{item.product_name}}</h6>
+        <p><b>Price:{{item.product_price}}</b></p>
+        <p><span>Color:{{item.product_color}}</span></p>
+        <p>{{item.product_description}}</p>
+
+    </div>
+
+</div>
+
+
+
+
+
